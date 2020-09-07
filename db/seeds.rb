@@ -45,3 +45,10 @@ sex = ["Male", "Female"]
 #     age = (Time.current.year - p.dob.year)
 #     p.update(age: age)
 # end
+
+# @appointments = Appointment.all
+# @appointments.each do |a|
+# 	new_time = Faker::Time.between_dates(from: Date.today - 15, to: Date.today + 120, period: :afternoon, format: :default)
+# 	a.update(appointment_date: new_time)
+# 	a.save!
+# end
