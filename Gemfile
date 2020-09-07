@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 #api
 gem 'grape'
+gem 'grape_on_rails_routes'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
