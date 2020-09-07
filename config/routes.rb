@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root 'home#dashboard'
+  mount Api => '/'
+
   resources :appointments
   resources :patients
   resources :doctors
