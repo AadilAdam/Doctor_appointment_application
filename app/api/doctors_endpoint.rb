@@ -43,7 +43,7 @@ class DoctorsEndpoint < Api
         # this would be for daily and the appointments for the day would be shown.
         start_time        = DateTime.strptime(@params[:start_date], "%m-%d-%Y") rescue (DateTime.now.beginning_of_day())
         end_time          = DateTime.strptime(@params[:start_date], "%m-%d-%Y") rescue (DateTime.now.end_of_day())
-        doc_appointments      = doctor.appointments.where(appointment_date: start_time..end_time).sort_by(&:appointment_date)
+        doc_appointments  = doctor.appointments.where(appointment_date: start_time..end_time).sort_by(&:appointment_date)
       end
       return doc_appointments
     end

@@ -30,7 +30,10 @@ class AppointmentsEndpoint < Api
         patient_id: params[:patient_id]
       )
       if patient_appointment.save!
-        render json: { appointment_id: patient_appointment.id }
+        { 
+          status: true, 
+          appointment_id: patient_appointment.id 
+        }
       else
         render errors: patient_appointment.errors.full_messages.join(","), status: 400
       end
