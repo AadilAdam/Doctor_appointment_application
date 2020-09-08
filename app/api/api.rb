@@ -7,6 +7,8 @@ class Api < Grape::API
   content_type :json, 'application/json'
 
   mount DoctorsEndpoint
+  mount UsersEndpoint
+  mount AppointmentsEndpoint
   
   before do
     header['Access-Control-Allow-Origin'] = '*'
