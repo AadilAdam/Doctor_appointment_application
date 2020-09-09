@@ -4,17 +4,17 @@ class AppointmentsEndpoint < Api
 
   RECURRENCE  = {daily: 'beginning_of_day', weekly: 'beginning_of_week', monthly: 'beginning_of_month'}
 
-  # helpers do
-  #   def current_user
-  #     binding.pry
-  #     warden = request.env["warden"]
-  #     if warden.user
-  #       warden.user
-  #     else
-  #       error!({message:'Access Denied', error:'401' },nil,nil)
-  #     end
-  #   end
-  # end
+  helpers do
+    def current_user
+      auth_token = request.headers["Token"]
+      user = User.find_by(auth_token: request.headers["Token"])
+      if user
+        user
+      else
+        error!({message:'Access Denied', error:'401' },nil,nil)
+      end
+    end
+  end
 
   namespace :appointments do
 
@@ -23,6 +23,8 @@ class AppointmentsEndpoint < Api
       # The date format should be given in the below format as there is no UI to select the date and time 
       # The patient and doctor ID is hard coded since there is no UI like a dropdown to select them
       # date time format: '10-02-2020 04:05:06 PM'
+      current_user
+      # binding.pry
       booking_time = DateTime.strptime(params[:appointment_date], '%m-%d-%Y %I:%M:%S %p') rescue DateTime.now
       patient_appointment = Appointment.new(
         appointment_date: booking_time,

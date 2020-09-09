@@ -2,17 +2,6 @@ class UsersEndpoint < Api
   format :json
   default_format :json
 
-  # helpers do
-  #   def current_user
-  #     warden = request.env["warden"]
-  #     if warden.user
-  #       warden.user
-  #     else
-  #       error!({message:'Access Denied', error:'401' },nil,nil)
-  #     end
-  #   end
-  # end
-
   namespace :users do
 
     desc 'user registration api'
