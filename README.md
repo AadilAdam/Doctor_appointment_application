@@ -78,6 +78,9 @@ You can run these API endpoints on postman step by step:
     GET Request URL: http://localhost:3000/api/doctors/:id/appointments
     Replace the id in the URL with one of them to check for appointments [7, 9, 13, 17, .....]
     Also, in the body please pass the following params * recurrence_type = weekly * to see for weekly appointments. Daily is the default params.
+    In the request headers, You will have to pass the token u received in the response after login api
+      as 
+      # Token = your_token
     
     Response:
     [
@@ -105,6 +108,9 @@ You can run these API endpoints on postman step by step:
     GET Request URL: http://localhost:3000/api/appointments/all
     
     In the body, please pass the following params * recurrence_type = weekly * to see for weekly appointments. Daily is the default params.
+    In the request headers, You will have to pass the token u received in the response after login api
+      as 
+      # Token = your_token
     
     Response: (this is the default response for the current day )
     [
@@ -146,6 +152,11 @@ You can run these API endpoints on postman step by step:
               doctor_id: [1, 2, 3, 4,....]
               patient_id: [1,2,3,4,5,6,....]
               appointment_date: 10-02-2020 04:05:06 PM ( should be of this format)
+             
+             
+       In the request headers, You will have to pass the token u received in the response after login api
+            as 
+            # Token = your_token
               
        Response:
        {"status":true,"appointment_id":1936}
