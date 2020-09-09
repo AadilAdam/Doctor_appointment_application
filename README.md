@@ -32,6 +32,12 @@ Also you need to setup the rails database
 ```
 rails db:migrate
 ```
+
+Also run the seed file to populate the database
+```
+rake db:seed
+```
+
 And then run
 
 ```
