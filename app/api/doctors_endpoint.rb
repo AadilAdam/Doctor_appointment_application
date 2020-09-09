@@ -4,20 +4,21 @@ class DoctorsEndpoint < Api
 
   RECURRENCE  = {daily: 'beginning_of_day', weekly: 'beginning_of_week', monthly: 'beginning_of_month'}
 
-  # helpers do
-  #   def current_user
-  #     warden = request.env["warden"]
-  #     if warden.user
-  #       warden.user
-  #     else
-  #       error!({message:'Access Denied', error:'401' },nil,nil)
-  #     end
-  #   end
-  # end
+  helpers do
+    def current_user
+      warden = request.env["warden"]
+      if warden.user
+        warden.user
+      else
+        error!({message:'Access Denied', error:'401' },nil,nil)
+      end
+    end
+  end
 
   namespace :doctors do
 
     get '/all' do
+      current_user
       doc = Doctor.all
       if doc
         { 
@@ -31,7 +32,7 @@ class DoctorsEndpoint < Api
 
     desc 'Fetch all the appointments of the respective doctors for the day or the week'
     get '/:id/appointments' do
-      # current_user
+      current_user
       doctor              = Doctor.find(params[:id])
       if params[:recurrence_type] == "weekly"
         # Since there is no UI , i will be hard coding the dates for this week
